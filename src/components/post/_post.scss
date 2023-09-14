@@ -1,0 +1,54 @@
+.post{
+    @include boxShadow;
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    &-header{
+        @include dflex(row, space-between, center, unset);
+        margin-bottom: 2rem;
+
+        &-left{
+            @include dflex(row, unset, unset, 1rem);
+            &-info{
+                @include dflex(column, unset, unset, 5px);
+                span{
+                    &:first-child{
+                        font-size: 12px;
+                        font-weight: 600;
+                    }
+                    &:last-child{
+                        font-size: 10px;
+                        font-weight: 200;
+                        color:#555;
+                    }
+                }
+            }
+        }
+    }
+    &-body{
+        p{
+            color: #999;
+            font-size: 15px;
+            margin: 1rem;
+        }
+        img{
+            width: 100%;
+            max-height: 350px;
+            min-height: 320px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+    }
+    &-footer{
+        &-container{
+            @include dflex(row, unset, center, 1.5rem);
+            .post-footer-item{
+                @include dflex(row, unset, center,5px);
+                span{
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

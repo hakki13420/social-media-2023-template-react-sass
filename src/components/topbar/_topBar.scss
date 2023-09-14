@@ -1,0 +1,58 @@
+
+.topbar{
+    @include dflex(row, center, center,unset);
+    padding: 1rem 2rem;
+    height: 60px;
+    background-color: $primaryColor;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    
+ .topbar-left{
+    flex: 3;
+    .logo{
+        cursor: pointer;
+        span{
+            &:first-child{
+                color: $fourthColor;
+            }
+            &:last-child{
+                color: white;
+                font-size: 12px;
+            }
+        }
+    }
+ }   
+ .topbar-center{
+     flex:5;
+     .search{
+        @include dflex(row, unset, center, 1rem);
+        border: 1px solid lightgray;
+        border-radius: 14px;
+        background-color: white;
+        padding: 10px 1rem;
+        .search-icon{
+        font-size:1rem;
+        }
+        input{
+            border: none;
+            outline: none;
+            width: 80%;
+        }
+    }
+ }   
+ .topbar-right{
+    flex: 4;
+    @include dflex(row, space-between, center, unset);
+
+    &-links{
+
+    }
+    &-icons{
+        @include dflex(row, unset, center, 1rem);
+        color: white;
+        cursor: pointer;
+    }
+
+ }   
+}
