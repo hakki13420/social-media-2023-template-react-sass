@@ -4,14 +4,17 @@ import Home from './pages/home/Home'
 import Profile from './pages/profile/Profile'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
-import { useState } from 'react'
+import { useContext } from 'react'
+import FourAndFour from './pages/404/FourAndFour'
+import { authContext } from './context/authContext'
+import Search from './pages/search/Search'
 
 function App () {
-  const [currentUser, setCurrentUser] = useState(true)
+  const { user } = useContext(authContext)
 
   const ProtectedRoute = ({ children }) => {
     return (
-      currentUser
+      user
         ? <>{ children }</>
         : <Navigate to='/login' />
     )
@@ -21,18 +24,30 @@ function App () {
     {
       path: '/',
       element: <ProtectedRoute><Home /></ProtectedRoute>
+
     },
     {
-      path: '/profile/:id',
-      element: <Profile/>
+      path: '/search',
+      element: <ProtectedRoute><Search /></ProtectedRoute>
+
     },
+    {
+      path: '/profile/:username',
+      element: <ProtectedRoute><Profile /></ProtectedRoute>
+
+    },
+
     {
       path: '/login',
-      element: <Login />
+      element: user ? <Home login/> : <Login />
     },
     {
       path: '/register',
       element: <Register />
+    },
+    {
+      path: '*',
+      element: <FourAndFour />
     }
   ])
   return (

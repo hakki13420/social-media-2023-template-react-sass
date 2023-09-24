@@ -24,14 +24,21 @@
     .user-friends{
         @include dflex(row, unset, unset, 1rem);
         flex-wrap: wrap;
-
+        cursor: pointer;
         &-item{
-            @include dflex(column, center, unset, 8px);
+            @include dflex(column, center, center, 8px);
             margin-bottom: 1rem;
             img{
                 width: 100px;
                 height: 80px;
                 border-radius: 5px;
+            }
+            .noAvatar{
+                width: 100px;
+                height: 80px;
+                border-radius: 5px;
+                border: 1px solid lightgray;
+                @include dflex(row, center, center, unset);
             }
             span{
                 color: #555;

@@ -80,6 +80,13 @@
                         height: 30px;
                     }
                 }
+                .error-input{
+                    border:1px solid red;
+                    &::placeholder{
+                        color: red;
+                    }
+                }
+                
                 button{
                     border: none;
                     width: 80%;
@@ -88,10 +95,13 @@
                     color: white;
                     border-radius: 5px;
                     font-weight: 800;
+                    cursor: pointer;                    
+                    @include dflex(row, center, center, 1rem);
                     @include mobile{
                         height: 30px;
                     }
                 }
+                
                 span{
                     color: $thirdColor;
                 }

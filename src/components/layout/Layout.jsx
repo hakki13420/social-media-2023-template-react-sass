@@ -2,6 +2,8 @@ import TopBar from '../topbar/TopBar'
 import LeftBar from '../leftBar/LeftBar'
 import Feed from '../feed/Feed'
 import ProfileComp from '../profile/ProfileComp'
+import { authContext } from '../../context/authContext'
+import { useContext } from 'react'
 
 const LayoutHome = ({ children }) => {
   return (
@@ -16,16 +18,17 @@ const LayoutHome = ({ children }) => {
   )
 }
 
-const LayoutProfile = ({ children }) => {
+const LayoutProfile = ({ children, user }) => {
+  const { user: currentUser } = useContext(authContext)
   return (
     <>
       <TopBar/>
       <div className="layout">
         <LeftBar/>
         <div className="layout-profile">
-          <ProfileComp/>
+          <ProfileComp user={user}/>
           <div className="content">
-            <Feed />
+            <Feed share={user._id === currentUser._id} />
             {children}
           </div>
         </div>
@@ -34,12 +37,12 @@ const LayoutProfile = ({ children }) => {
   )
 }
 
-const Layout = ({ children, profile }) => {
+const Layout = ({ children, user }) => {
   return (
     <>
       {
-        profile
-          ? <LayoutProfile>{children}</LayoutProfile>
+        user
+          ? <LayoutProfile user={user}>{children}</LayoutProfile>
           : <LayoutHome>{children}</LayoutHome>
       }
     </>

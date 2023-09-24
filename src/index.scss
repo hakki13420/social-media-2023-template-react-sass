@@ -11,6 +11,10 @@ ul{
   padding: 0;
   list-style: none
 }
+a{
+  text-decoration: none;
+  color: inherit;
+}
 
 ::-webkit-scrollbar{
   width: 5px;
@@ -48,6 +52,12 @@ ul{
 @import './components/posts/posts';
 
 
+@import './components/notification/notification';
 @import './pages/login/login';
 @import './pages/register/register';
+
+@import './components/comments/comments';
+@import './components/comment/comment';
+
+@import './components/search/searchItem';
 

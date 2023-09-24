@@ -51,7 +51,28 @@
     &-icons{
         @include dflex(row, unset, center, 1rem);
         color: white;
-        cursor: pointer;
+        cursor: pointer;        
+        
+    }
+    .avatar-container{
+        position: relative;
+
+        .menu-context{
+            position: absolute;
+            top: 2.5rem;
+            right: 0.5rem;
+            width: 150px;
+            padding: 1rem 1rem 0;
+            border-radius: 10px;
+            background-color: lightgray;
+            p{
+                margin-bottom: 1rem;
+                cursor: pointer;
+                &:hover{
+                    color: $secondColor;
+                }
+            }
+        }
     }
 
  }   

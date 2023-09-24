@@ -34,7 +34,6 @@ const LeftBar = () => {
           {
             users.map(user => <AvatarName key={user.id} user={user} />)
           }
-
         </ul>
       </div>
     </div>

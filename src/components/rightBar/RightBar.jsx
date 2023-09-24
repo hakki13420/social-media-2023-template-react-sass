@@ -1,8 +1,25 @@
 import { CardGiftcardOutlined } from '@mui/icons-material'
 import OnlineFriend from './OnlineFriend'
-import { users } from '../../data.json'
+import { useContext, useEffect, useState } from 'react'
+import { privateRequest } from '../../axiosRequest'
+import { authContext } from '../../context/authContext'
 
 const RightBar = () => {
+  const [friends, setFriends] = useState([])
+  const { user } = useContext(authContext)
+
+  useEffect(() => {
+    const getFriends = async () => {
+      try {
+        const res = await privateRequest.get('users/friends?username=' + user.username)
+        setFriends(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getFriends()
+  }, [user])
+
   return (
     <div className="right-bar">
       <div className="right-bar-birthDay">
@@ -17,7 +34,7 @@ const RightBar = () => {
         <h1>Online Friends</h1>
         <ul className="online-friends-list">
           {
-            users.map(user => <OnlineFriend key={user.id} user={user}/>)
+            friends.map(user => <OnlineFriend key={user._id} user={user}/>)
           }
         </ul>
       </div>

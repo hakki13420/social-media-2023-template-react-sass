@@ -1,10 +1,10 @@
 import Posts from '../posts/Posts'
 import Share from '../share/Share'
 
-const Feed = () => {
+const Feed = ({ share }) => {
   return (
     <div className="feed">
-      <Share/>
+      {(share === undefined || share === true) && <Share/>}
       <Posts/>
     </div>
   )
